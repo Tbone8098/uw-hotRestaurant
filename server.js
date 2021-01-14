@@ -21,6 +21,8 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
 });
 
+app.post("/api/reservations/new", (req, res) => {});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
