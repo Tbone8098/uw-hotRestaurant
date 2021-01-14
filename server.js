@@ -79,7 +79,7 @@ app.post("/api/reservations/new", (req, res) => {
     newReservation = req.body;
     console.log(newReservation);
     reservation.push(newReservation);
-    res.json(reservation);
+    res.json(reservations);
 });
 
 // D (delete)
