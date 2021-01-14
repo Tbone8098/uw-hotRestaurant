@@ -1,6 +1,7 @@
 // Dependencies
 // =============================================================
 var express = require("express");
+const { parse } = require("path");
 var path = require("path");
 
 // Sets up the Express App
@@ -83,6 +84,18 @@ app.get("/api/reservations/:reservations", function (req, res) {
 // U (update)
 
 // D (delete)
+app.delete("/api/reservations/:UID/delete", (req, res) => {
+    // find one
+    resUID = req.params.UID;
+    console.log(typeof resUID);
+    reservations.forEach((reservation, i) => {
+        console.log(reservation.UID);
+        if (reservation.UID === parseInt(resUID)) {
+            reservations.splice(i, 1);
+        }
+    });
+    res.json(reservations);
+});
 
 // Starts the server to begin listening
 // =============================================================
