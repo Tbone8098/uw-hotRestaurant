@@ -8,7 +8,7 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-var reservation = [
+var reservations = [
     {
         name: "hannah",
         phoneNumber: "425-698-8808",
@@ -67,7 +67,7 @@ app.get("/api/reservations/:reservations", function (req, res) {
 
     for (var i = 0; i < reservations.length; i++) {
         if (resChosen === reservations[i].routeName) {
-            return res.json(reservations[i]);
+            res.json(reservations[i]);
         }
     }
 
