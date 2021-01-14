@@ -8,37 +8,47 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-var reservation = [{
-    name: "hannah",
-    phoneNumber: "425-698-8808",
-    email: "hannahstar@gmail.com",
-    uniqueId: 100
-}, {
-    name: "tyler",
-    phoneNumber: "123-456-7890",
-    email: "tyler@gmail.com",
-    uniqueId: 101
-}, {
-    name: "andrew",
-    phoneNumber: "123-456-7890",
-    email: "andrew@gmail.com",
-    uniqueId: 102
-}, {
-    name: "keon",
-    phoneNumber: "123-456-7890",
-    email: "keon@gmail.com",
-    uniqueId: 103
-}];
-
+var reservation = [
+    {
+        name: "hannah",
+        phoneNumber: "425-698-8808",
+        email: "hannahstar@gmail.com",
+        uniqueId: 100,
+    },
+    {
+        name: "tyler",
+        phoneNumber: "123-456-7890",
+        email: "tyler@gmail.com",
+        uniqueId: 101,
+    },
+    {
+        name: "andrew",
+        phoneNumber: "123-456-7890",
+        email: "andrew@gmail.com",
+        uniqueId: 102,
+    },
+    {
+        name: "keon",
+        phoneNumber: "123-456-7890",
+        email: "keon@gmail.com",
+        uniqueId: 103,
+    },
+];
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
 app.use(express.json());
 
 // Routes
 // =============================================================
+
+// C (create)
+
+// R (retrieve)
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
@@ -63,6 +73,12 @@ app.get("/api/reservations/:reservations", function (req, res) {
 
     return res.json(false);
 });
+
+// U (update)
+
+// D (delete)
+
+app.post("/api/reservations/new", (req, res) => {});
 
 // Starts the server to begin listening
 // =============================================================
