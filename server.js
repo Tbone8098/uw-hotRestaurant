@@ -1,7 +1,9 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-const { parse } = require("path");
+const {
+    parse
+} = require("path");
 var path = require("path");
 
 // Sets up the Express App
@@ -9,8 +11,7 @@ var path = require("path");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-var reservations = [
-    {
+var reservations = [{
         name: "hannah",
         phoneNumber: "425-698-8808",
         email: "hannahstar@gmail.com",
@@ -43,7 +44,7 @@ app.use(
     })
 );
 app.use(express.json());
-
+app.use(express.static("public"))
 // Routes
 // =============================================================
 
@@ -82,6 +83,28 @@ app.get("/api/reservations/:reservations", function (req, res) {
 });
 
 // U (update)
+app.put("/api/reservations/:UID/update", (req, res) => {
+    // find one
+    resUID = req.params.UID;
+    reservations.forEach((reservation, i) => {
+        if (reservation.UID === parseInt(resUID)) {
+            // reservations[i] = req.body
+            let incomingKeys = Object.keys(req.body)
+            let reservationKeys = Object.keys(reservation)
+            console.log(incomingKeys)
+            console.log(reservationKeys)
+            for (let i = 0; i < reservationKeys.length; i++) {
+                for (let j = 0; j < incomingKeys.length; j++) {
+                    if (incomingKeys[j] === reservationKeys[i]) {
+                        reservation[reservationKeys[i]] = rec.body[incomingKeys[j]]
+                    }
+                }
+            }
+
+        }
+    });
+    res.json(reservations);
+});
 
 // D (delete)
 app.delete("/api/reservations/:UID/delete", (req, res) => {
