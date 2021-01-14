@@ -87,9 +87,7 @@ app.get("/api/reservations/:reservations", function (req, res) {
 app.delete("/api/reservations/:UID/delete", (req, res) => {
     // find one
     resUID = req.params.UID;
-    console.log(typeof resUID);
     reservations.forEach((reservation, i) => {
-        console.log(reservation.UID);
         if (reservation.UID === parseInt(resUID)) {
             reservations.splice(i, 1);
         }
