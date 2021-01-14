@@ -47,6 +47,12 @@ app.use(express.json());
 // =============================================================
 
 // C (create)
+app.post("/api/reservations/new", (req, res) => {
+    newReservation = req.body;
+    console.log(newReservation);
+    reservation.push(newReservation);
+    res.json(reservations);
+});
 
 // R (retrieve)
 
@@ -75,12 +81,6 @@ app.get("/api/reservations/:reservations", function (req, res) {
 });
 
 // U (update)
-app.post("/api/reservations/new", (req, res) => {
-    newReservation = req.body;
-    console.log(newReservation);
-    reservation.push(newReservation);
-    res.json(reservations);
-});
 
 // D (delete)
 
