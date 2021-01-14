@@ -37,13 +37,13 @@
                   </div>
     
                   <div class="form-group">
-                    <label for="role">ID</label>
-                    <input type="text" class="form-control" id="role">
+                    <label for="role">Phone Number</label>
+                    <input type="text" class="form-control" id="phone">
                   </div>
     
                   <div class="form-group">
-                    <label for="age">Number of People</label>
-                    <input type="text" class="form-control" id="age">
+                    <label for="age">Email</label>
+                    <input type="text" class="form-control" id="email">
                   </div>
     
                 </form>
@@ -59,30 +59,24 @@
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
-      var searchedCharacter = $("#character-search").val().trim();
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+      };
 
-      // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      $.get("/api/characters/" + searchedCharacter, function(data) {
-        console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
-        } else {
-          $("#name").text(
-            "The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-      });
+      // Question: What does this code do??
+      $.post("/api/reservationviews", newReservation)
+        .then(function(data) {
+          console.log("add.html", data);
+          alert("Adding reservation...");
+        });
     });
-
   </script>
-</body>
 
+</body>
 </html>
+
