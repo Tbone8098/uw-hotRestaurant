@@ -13,25 +13,25 @@ var reservation = [
         name: "hannah",
         phoneNumber: "425-698-8808",
         email: "hannahstar@gmail.com",
-        uniqueId: 100,
+        UID: 100,
     },
     {
         name: "tyler",
         phoneNumber: "123-456-7890",
         email: "tyler@gmail.com",
-        uniqueId: 101,
+        UID: 101,
     },
     {
         name: "andrew",
         phoneNumber: "123-456-7890",
         email: "andrew@gmail.com",
-        uniqueId: 102,
+        UID: 102,
     },
     {
         name: "keon",
         phoneNumber: "123-456-7890",
         email: "keon@gmail.com",
-        uniqueId: 103,
+        UID: 103,
     },
 ];
 
@@ -75,10 +75,14 @@ app.get("/api/reservations/:reservations", function (req, res) {
 });
 
 // U (update)
+app.post("/api/reservations/new", (req, res) => {
+    newReservation = req.body;
+    console.log(newReservation);
+    reservation.push(newReservation);
+    res.json(reservation);
+});
 
 // D (delete)
-
-app.post("/api/reservations/new", (req, res) => {});
 
 // Starts the server to begin listening
 // =============================================================
